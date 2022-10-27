@@ -1,13 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+	sendMessageisOpen: false,
+};
 
 const mailSlice = createSlice({
-	name: "mailSlice",
+	name: "mail",
 	initialState,
-	reducers: {},
+	reducers: {
+		openSendMessage: (state) => {
+			state.sendMessageisOpen = true;
+		},
+		closeSendMessage: (state) => {
+			state.sendMessageisOpen = false;
+		},
+	},
 });
 
-export const {} = mailSlice.actions;
-
+export const { openSendMessage, closeSendMessage } = mailSlice.actions;
+export const selectSendMessageIsOpen = ({ mail }) => mail.sendMessageisOpen;
 export default mailSlice.reducer;

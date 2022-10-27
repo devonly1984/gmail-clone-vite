@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { EmailList, Header, Mail, Sidebar } from "./components";
+import { EmailList, Header, Mail, SendMail, Sidebar } from "./components";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -15,6 +15,7 @@ const App = () => {
 						<Route path="/" element={<EmailList />} />
 					</Routes>
 				</div>
+				<SendMail />
 			</div>
 		</Router>
 	);

@@ -3,6 +3,6 @@ import mailReducer from "../slices/mailSlice";
 
 export default configureStore({
 	reducer: {
-		mailSlice: mailReducer,
+		mail: mailReducer,
 	},
 });
