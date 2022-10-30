@@ -1,12 +1,17 @@
 import "./SendMail.css";
-
 import { Button } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { closeSendMessage } from "../../slices/mailSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addMail,
+  closeSendMessage,
+  selectSendMessageIsOpen,
+} from "../../redux/slices/mailSlice";
 
 const SendMail = () => {
+  const dispatch = useDispatch();
+  const MessageBoxState = useSelector(selectSendMessageIsOpen);
   const {
     register,
     handleSubmit,
@@ -14,9 +19,12 @@ const SendMail = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(addMail(data));
+    if (MessageBoxState === "false") {
+      dispatch(closeSendMessage());
+    }
   };
-  const dispatch = useDispatch();
+
   return (
     <div className="sendMail">
       <div className="sendMail__header">

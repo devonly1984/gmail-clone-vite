@@ -16,11 +16,12 @@ import {
 import { Button, IconButton } from "@mui/material";
 
 import SidebarOptions from "./Options/SidebarOptions";
-import { useDispatch } from "react-redux";
-import { openSendMessage } from "../../slices/mailSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { openSendMessage, selectNumMails } from "../../redux/slices/mailSlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const NumMails = useSelector(selectNumMails);
   return (
     <div className="sidebar">
       <Button
@@ -30,13 +31,22 @@ const Sidebar = () => {
       >
         Compose
       </Button>
-      <SidebarOptions Icon={Inbox} title="Inbox" number={54} selected={true} />
-      <SidebarOptions Icon={Star} title="Starred" number={54} />
-      <SidebarOptions Icon={AccessTime} title="Snoozed" number={54} />
-      <SidebarOptions Icon={LabelImportant} title="Important" number={54} />
-      <SidebarOptions Icon={NearMe} title="Sent" number={54} />
-      <SidebarOptions Icon={Note} title="Drafts" number={54} />
-      <SidebarOptions Icon={ExpandMore} title="More" number={54} />
+      <SidebarOptions
+        Icon={Inbox}
+        title="Inbox"
+        number={NumMails}
+        selected={true}
+      />
+      <SidebarOptions Icon={Star} title="Starred" number={NumMails} />
+      <SidebarOptions Icon={AccessTime} title="Snoozed" number={NumMails} />
+      <SidebarOptions
+        Icon={LabelImportant}
+        title="Important"
+        number={NumMails}
+      />
+      <SidebarOptions Icon={NearMe} title="Sent" number={NumMails} />
+      <SidebarOptions Icon={Note} title="Drafts" number={NumMails} />
+      <SidebarOptions Icon={ExpandMore} title="More" number={NumMails} />
       <div className="sidebar__footer">
         <div className="sidebar__footerIcons">
           <IconButton>
